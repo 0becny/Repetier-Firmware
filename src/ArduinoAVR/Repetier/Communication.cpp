@@ -29,7 +29,7 @@ uint8_t Com::selectedLanguage;
 #if DRIVE_SYSTEM == DELTA
 #define MACHINE_TYPE "Delta"
 #elif DRIVE_SYSTEM == CARTESIAN
-#define MACHINE_TYPE "Mendel"
+#define MACHINE_TYPE "Wanhao D7"
 #else
 #define MACHINE_TYPE "Core_XY"
 #endif
@@ -40,6 +40,11 @@ uint8_t Com::selectedLanguage;
 
 FSTRINGVALUE(Com::tFirmware,"FIRMWARE_NAME:Repetier_" REPETIER_VERSION " FIRMWARE_URL:" FIRMWARE_URL " PROTOCOL_VERSION:1.0 MACHINE_TYPE:" MACHINE_TYPE " EXTRUDER_COUNT:" XSTR(NUM_EXTRUDER) " REPETIER_PROTOCOL:3")
 FSTRINGVALUE(Com::tDebug,"Debug:")
+
+#ifdef NANODLP
+FSTRINGVALUE(Com::tNanodlp,"Z_move_comp");
+#endif
+
 FSTRINGVALUE(Com::tOk,"ok")
 FSTRINGVALUE(Com::tNewline,"\r\n")
 FSTRINGVALUE(Com::tNAN,"NAN")
@@ -403,8 +408,8 @@ FSTRINGVALUE(Com::tEPRDistanceRetractHeating,"distance to retract when heating [
 FSTRINGVALUE(Com::tEPRExtruderCoolerSpeed,"extruder cooler speed [0-255]")
 FSTRINGVALUE(Com::tEPRAdvanceK,"advance K [0=off]")
 FSTRINGVALUE(Com::tEPRAdvanceL,"advance L [0=off]")
-FSTRINGVALUE(Com::tEPRPreheatTemp,"Preheat temp. [°C]")
-FSTRINGVALUE(Com::tEPRPreheatBedTemp,"Bed Preheat temp. [°C]")
+FSTRINGVALUE(Com::tEPRPreheatTemp,"Preheat temp. [Â°C]")
+FSTRINGVALUE(Com::tEPRPreheatBedTemp,"Bed Preheat temp. [Â°C]")
 
 #endif
 #if SDSUPPORT
@@ -652,4 +657,3 @@ void Com::printFloat(float number, uint8_t digits)
     remainder -= toPrint;
   }
 }
-

@@ -470,6 +470,10 @@ FSTRINGVAR(tEPRSegmentsPerSecondPrint)
 FSTRINGVAR(tEPRSegmentsPerSecondTravel)
 #endif
 
+#ifdef NANODLP
+FSTRINGVAR(tNanodlp)
+#endif
+
 static void cap(FSTRINGPARAM(text));
 static void config(FSTRINGPARAM(text));
 static void config(FSTRINGPARAM(text),int value);
