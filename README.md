@@ -31,6 +31,10 @@ for easy and fast configuration. You get the complete sources you need to compil
 This system also allows it to upload configurations created with this tool and modify the configuration. This is handy for updates as you get all newly introduced parameter just by uploading the old version and downloading the
 latest version. New parameter are initalized with default values.
 
+## Version 1.0.0 Nanodlp mods
+* Added the Z_move_comp message for nanodlp
+* Added P1 parameter to the G1 move commands to wait for move complete
+
 ## Version 0.92.8 
 * Cleaner code base.
 * Pulse dense modulation for heater and fans.
