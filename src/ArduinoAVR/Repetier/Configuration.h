@@ -38,6 +38,8 @@
 
 #define NUM_EXTRUDER 1
 #define MOTHERBOARD 33
+#define D7_Rev12
+
 #include "pins.h"
 
 // ################## EDIT THESE SETTINGS MANUALLY ################
@@ -59,14 +61,19 @@
 #define X_MIN_PIN -1
 #undef Y_MIN_PIN
 #define Y_MIN_PIN -1
-#undef Z_MIN_PIN
-#define Z_MIN_PIN ORIG_Z_MAX_PIN
+
+#ifndef D7_Rev12
+  #undef Z_MIN_PIN
+  #define Z_MIN_PIN ORIG_Z_MAX_PIN
+  #undef Z_MAX_PIN
+  #define Z_MAX_PIN ORIG_Z_MIN_PIN
+#endif
+
 #undef X_MAX_PIN
 #define X_MAX_PIN -1
 #undef Y_MAX_PIN
 #define Y_MAX_PIN -1
-#undef Z_MAX_PIN
-#define Z_MAX_PIN ORIG_Z_MIN_PIN
+
 #undef HEATER_1
 #define FAN2_PIN 8
 
