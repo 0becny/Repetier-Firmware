@@ -208,16 +208,10 @@ void GCode::checkAndPushCommand()
 #if NEW_COMMUNICATION
             GCodeSource::activeSource->lastLineNumber = actLineNumber;
             Com::printFLN(Com::tOk);
-#ifdef NANODLP
-            Com::printFLN(Com::tNanodlp);
-#endif
             GCodeSource::activeSource->waitingForResend = -1;
 #else
             lastLineNumber = actLineNumber;
             Com::printFLN(Com::tOk);
-#ifdef NANODLP
-            Com::printFLN(Com::tNanodlp);
-#endif
             waitingForResend = -1;
 #endif
             return;
@@ -262,9 +256,6 @@ void GCode::checkAndPushCommand()
                 commandsReceivingWritePosition = 0;
                 Com::printFLN(Com::tSkip,actLineNumber);
                 Com::printFLN(Com::tOk);
-#ifdef NANODLP
-                Com::printFLN(Com::tNanodlp);
-#endif
             }
 #if NEW_COMMUNICATION
             else if(GCodeSource::activeSource->waitingForResend < 0)  // after a resend, we have to skip the garbage in buffers, no message for this
@@ -293,9 +284,6 @@ void GCode::checkAndPushCommand()
                 commandsReceivingWritePosition = 0;
                 Com::printFLN(Com::tSkip, actLineNumber);
                 Com::printFLN(Com::tOk);
-#ifdef NANODLP
-                Com::printFLN(Com::tNanodlp);
-#endif
             }
             return;
         }
@@ -325,14 +313,8 @@ void GCode::checkAndPushCommand()
 #endif
 #if ACK_WITH_LINENUMBER
     Com::printFLN(Com::tOkSpace, actLineNumber);
-#ifdef NANODLP
-    Com::printFLN(Com::tNanodlp);
-#endif
 #else
     Com::printFLN(Com::tOk);
-#ifdef NANODLP
-    Com::printFLN(Com::tNanodlp);
-#endif
 #endif
 #if NEW_COMMUNICATION
     GCodeSource::activeSource->wasLastCommandReceivedAsBinary = sendAsBinary;

@@ -38,7 +38,8 @@
 
 #define NUM_EXTRUDER 1
 #define MOTHERBOARD 33
-#define D7_Rev12
+
+//#define D7_NORMAL_ZENDSTOPS
 
 #include "pins.h"
 
@@ -62,7 +63,7 @@
 #undef Y_MIN_PIN
 #define Y_MIN_PIN -1
 
-#ifndef D7_Rev12
+#ifndef D7_NORMAL_ZENDSTOPS
   #undef Z_MIN_PIN
   #define Z_MIN_PIN ORIG_Z_MAX_PIN
   #undef Z_MAX_PIN
@@ -452,7 +453,7 @@ WARNING: Servos can draw a considerable amount of current. Make sure your system
 #define UI_SERVO_CONTROL 0
 #define FAN_KICKSTART_TIME  200
 
-        #define FEATURE_WATCHDOG 1
+#define FEATURE_WATCHDOG 1
 
 // #################### Z-Probing #####################
 

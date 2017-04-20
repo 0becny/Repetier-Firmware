@@ -923,6 +923,7 @@ void Commands::processGCode(GCode *com) {
 #ifdef NANODLP
 if(com->hasP() && com->P>0)   //if T is 1 then waitUntilEndOfAllMoves
     Commands::waitUntilEndOfAllMoves();
+    Com::printFLN(Com::tNanodlp);
 #endif
             break;
 #if ARC_SUPPORT
@@ -970,6 +971,11 @@ if(com->hasP() && com->P>0)   //if T is 1 then waitUntilEndOfAllMoves
                     Printer::currentPositionSteps[E_AXIS] = 0;
                 if(homeAllAxis || !com->hasNoXYZ())
                     Printer::homeAxis(homeAllAxis || com->hasX(),homeAllAxis || com->hasY(),homeAllAxis || com->hasZ());
+#ifdef NANODLP
+              if(com->hasP() && com->P>0)   //if T is 1 then waitUntilEndOfAllMoves
+                  Commands::waitUntilEndOfAllMoves();
+                  Com::printFLN(Com::tNanodlp);
+#endif                    
             }
             break;
 #if FEATURE_Z_PROBE
@@ -1719,8 +1725,15 @@ void Commands::processMCode(GCode *com) {
             if(!(Printer::flag2 & PRINTER_FLAG2_IGNORE_M106_COMMAND)) {
                 if(com->hasP() && com->P == 1)
                     setFan2Speed(com->hasS() ? com->S : 255);
-                else
+                else {
                     setFanSpeed(com->hasS() ? com->S : 255);
+#ifdef NANODLP
+                    if (com->S || !com->hasS()) { //for the newer D7 units that have an enclosure cooling fan, turn the fan on automatically if the UV is turned on
+                          if(pwm_pos[PWM_FAN2] == 0)
+                            Printer::setFan2SpeedDirectly(255);
+                    }
+ #endif
+                }
             }
             break;
         case 107: // M107 Fan Off
