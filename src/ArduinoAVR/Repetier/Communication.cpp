@@ -657,3 +657,4 @@ void Com::printFloat(float number, uint8_t digits)
     remainder -= toPrint;
   }
 }
+

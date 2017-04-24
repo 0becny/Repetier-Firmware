@@ -1,4 +1,4 @@
-# Repetier-Firmware - the fast and user friendly firmware
+# Repetier-Firmware modified for Nanodlp. Use this branch and not Master- the fast and user friendly firmware
 
 ## Notes for developers/pull requests
 

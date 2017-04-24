@@ -169,3 +169,4 @@ void uiCheckSlowKeys(int &action)
 {
     GD2::checkTouch();
 }
+

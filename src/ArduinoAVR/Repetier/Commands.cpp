@@ -2605,3 +2605,4 @@ void Commands::writeLowestFreeRAM() {
         Com::printFLN(Com::tFreeRAM, lowestRAMValue);
     }
 }
+
